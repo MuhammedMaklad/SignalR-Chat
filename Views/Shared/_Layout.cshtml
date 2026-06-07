@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SignalRChatApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SignalRChatApp.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+            <div class="container px-3">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <div class="text-white rounded-3 p-2 me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: var(--color-primary);">
+                        <i class="bi bi-chat-dots-fill"></i>
+                    </div>
+                    <span class="text-dark fw-800">SignalRChatApp</span>
+                </a>
+
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-modern @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                               asp-controller="Home" asp-action="Index">Dashboard</a>
+                        </li>
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-modern @(ViewContext.RouteData.Values["controller"]?.ToString() == "Chat" ? "active" : "")"
+                                   asp-controller="Chat" asp-action="Index">Messages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-modern @(ViewContext.RouteData.Values["controller"]?.ToString() == "Groups" ? "active" : "")"
+                                   asp-controller="Groups" asp-action="Index">Communities</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-3">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <div class="dropdown">
+                                <a class="user-dropdown-toggle d-flex align-items-center text-dark text-decoration-none" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="me-2 text-white d-flex align-items-center justify-content-center rounded-circle shadow-sm" style="width: 38px; height: 38px; font-weight: 700; font-size: 0.9rem; background-color: var(--color-primary);">
+                                        @(User.Identity?.Name?.ElementAtOrDefault(0).ToString().ToUpper() ?? "U")
+                                    </div>
+                                    <div class="d-none d-xl-block">
+                                        <div class="fw-bold small line-height-1 text-dark">@(User.Identity?.Name ?? "User")</div>
+                                        <div class="text-muted smaller">Active now</div>
+                                    </div>
+                                    <i class="bi bi-chevron-down ms-2 small text-muted"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-modern shadow-lg border-0 mt-3" aria-labelledby="userDropdown">
+                                    <li class="px-3 py-2 border-bottom mb-2">
+                                        <div class="fw-bold text-dark">@(User.Identity?.Name ?? "User")</div>
+                                        <div class="smaller text-muted">User Account</div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item dropdown-item-modern" href="#">
+                                            <i class="bi bi-person text-muted"></i> My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item dropdown-item-modern" href="#">
+                                            <i class="bi bi-gear text-muted"></i> Settings
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-2"></li>
+                                    <li>
+                                        <form asp-controller="Auth" asp-action="Logout" method="post">
+                                            <button type="submit" class="dropdown-item dropdown-item-modern text-danger">
+                                                <i class="bi bi-box-arrow-right"></i> Sign Out
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="btn btn-link text-muted text-decoration-none fw-600 hover-primary" asp-controller="Auth" asp-action="Login">Login</a>
+                            <a class="btn btn-primary px-4 rounded-pill shadow-sm fw-600" asp-controller="Auth" asp-action="Register" style="background-color: var(--color-primary); border-color: var(--color-primary);">Get Started</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="main-content">
+        <div class="@(ViewData["FullWidth"] is bool fullWidth && fullWidth ? "container-fluid px-lg-4" : "container") py-4">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-4 bg-white border-top border-light">
+        <div class="container text-center text-muted">
+            <div class="smaller mb-2">&copy; 2026 SignalRChatApp. All rights reserved.</div>
+            <div class="d-flex justify-content-center gap-3">
+                <a asp-controller="Home" asp-action="Privacy" class="text-muted small text-decoration-none hover-primary">Privacy Policy</a>
+                <a href="#" class="text-muted small text-decoration-none hover-primary">Terms of Service</a>
+                <a href="#" class="text-muted small text-decoration-none hover-primary">Help Center</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/lucide/dist/umd/lucide.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

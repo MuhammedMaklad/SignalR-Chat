@@ -1,0 +1,72 @@
+@model List<SignalRChatApp.Contracts.GroupDto>
+
+@{
+    ViewData["Title"] = "Communities";
+}
+
+<link rel="stylesheet" href="~/css/communities-modern.css" asp-append-version="true" />
+
+<div class="communities-wrapper">
+    <header class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h1 class="fw-800 text-dark mb-1">Communities</h1>
+            <p class="text-muted mb-0">Discover and manage your community hubs.</p>
+        </div>
+        <a class="btn btn-primary px-4 py-2 rounded-pill shadow-sm d-flex align-items-center gap-2 fw-600" asp-controller="Groups" asp-action="Create">
+            <i class="bi bi-plus-lg"></i>
+            <span>Create Community</span>
+        </a>
+    </header>
+
+    @if (Model.Count == 0)
+    {
+        <div class="empty-communities">
+            <i class="bi bi-people"></i>
+            <h3>No Communities Found</h3>
+            <p class="text-muted mb-4">You haven't joined or created any communities yet.</p>
+            <a class="btn btn-primary px-4 rounded-pill" asp-controller="Groups" asp-action="Create">Start a Community</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var group in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="community-card">
+                        <div class="community-header">
+                            <div class="community-icon">
+                                <i class="bi bi-hash"></i>
+                            </div>
+                            @if (User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value == group.OwnerId)
+                            {
+                                <form asp-controller="Groups" asp-action="Delete" asp-route-id="@group.Id" method="post"
+                                      onsubmit="return confirm('Delete &quot;@group.Name&quot;? This action is permanent.');">
+                                    <button type="submit" class="btn btn-link text-danger p-0" title="Delete Community">
+                                        <i class="bi bi-trash fs-5"></i>
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                        
+                        <div class="community-info">
+                            <h3 class="community-name">@group.Name</h3>
+                            <div class="community-meta">
+                                <span><i class="bi bi-people-fill"></i> @group.MemberCount members</span>
+                            </div>
+                        </div>
+
+                        <div class="community-actions">
+                            <a class="btn-community-action btn-outline-primary" asp-controller="Chat" asp-action="Index" asp-route-groupId="@group.Id">
+                                <i class="bi bi-chat-text"></i> Open Chat
+                            </a>
+                            <a class="btn-community-action btn-primary" asp-controller="Groups" asp-action="AddMember" asp-route-id="@group.Id">
+                                <i class="bi bi-person-plus"></i> Invite
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

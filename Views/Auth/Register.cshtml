@@ -1,0 +1,116 @@
+@model SignalRChatApp.ViewModel.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<link rel="stylesheet" href="~/css/auth-modern.css" asp-append-version="true" />
+
+<div class="auth-page-wrapper">
+    <div class="auth-container">
+        <!-- Left Side: Branding & Features -->
+        <div class="auth-side-info">
+            <div class="brand">
+                <i class="bi bi-chat-dots-fill fs-2"></i>
+                <span>SignalRChatApp</span>
+            </div>
+
+            <div class="auth-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="bi bi-person-workspace"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h5>Personal Profile</h5>
+                        <p>Customize your identity and how others see you in the community.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="bi bi-cpu-fill"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h5>Powerful Communities</h5>
+                        <p>Create groups for your team, friends, or interests in seconds.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h5>Modern Experience</h5>
+                        <p>Clean, intuitive interface designed for the best user experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-footer-note">
+                <p class="mb-0 opacity-75 small">&copy; 2026 SignalRChatApp. All rights reserved.</p>
+            </div>
+        </div>
+
+        <!-- Right Side: Register Form -->
+        <div class="auth-form-side">
+            <div class="auth-header text-center text-lg-start">
+                <h2>Create Account</h2>
+                <p>Join thousands of users chatting in real-time</p>
+            </div>
+
+            <form asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+                <div class="form-group-modern">
+                    <label asp-for="Username" class="form-label-modern">Username</label>
+                    <input asp-for="Username" class="form-control-modern" placeholder="e.g. AlexSmith" />
+                    <span asp-validation-for="Username"></span>
+                </div>
+                
+                <div class="form-group-modern">
+                    <label asp-for="Email" class="form-label-modern">Email Address</label>
+                    <input asp-for="Email" class="form-control-modern" placeholder="e.g. alex@example.com" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label asp-for="Password" class="form-label-modern">Password</label>
+                            <input asp-for="Password" type="password" class="form-control-modern" placeholder="••••••••" />
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label asp-for="ConfirmPassword" class="form-label-modern">Confirm</label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control-modern" placeholder="••••••••" />
+                            <span asp-validation-for="ConfirmPassword"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="terms" required>
+                    <label class="form-check-label text-muted small" for="terms">
+                        I agree to the <a href="#" class="text-primary text-decoration-none fw-bold">Terms of Service</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="text-center mt-auto pt-4">
+                <p class="mb-0 text-muted small">Already have an account? 
+                    <a asp-action="Login" class="text-primary text-decoration-none fw-bold">Sign in here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

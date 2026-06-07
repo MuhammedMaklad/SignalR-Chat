@@ -1,0 +1,166 @@
+/* ============================================
+   Community & Group Management Styles
+   ============================================ */
+
+.communities-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   Community Card
+   ============================================ */
+.community-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.community-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.05);
+    border-color: var(--color-primary);
+}
+
+.community-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+}
+
+.community-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.community-name {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.25rem;
+}
+
+.community-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+.community-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.community-actions {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid var(--color-bg-gray);
+}
+
+/* ============================================
+   Community Action Buttons
+   ============================================ */
+.btn-community-action {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.btn-community-action.btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-border);
+    background: transparent;
+}
+
+.btn-community-action.btn-outline-primary:hover {
+    background: rgba(var(--color-primary-rgb), 0.05);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-community-action.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.btn-community-action.btn-primary:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: #fff;
+}
+
+/* ============================================
+   Create/Add Member Page Styles
+   ============================================ */
+.form-container-card {
+    background: var(--color-bg-surface);
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.form-header-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 2.5rem;
+    color: #fff;
+    text-align: center;
+}
+
+.form-header-gradient i {
+    font-size: 3rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.form-body-modern {
+    padding: 2.5rem;
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+.empty-communities {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--color-bg-surface);
+    border-radius: 20px;
+    border: 1px dashed var(--color-text-light);
+}
+
+.empty-communities i {
+    font-size: 4rem;
+    color: var(--color-text-light);
+    opacity: 0.3;
+    margin-bottom: 1.5rem;
+    display: block;
+}

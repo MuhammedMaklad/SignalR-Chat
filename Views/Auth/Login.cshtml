@@ -1,0 +1,117 @@
+@model SignalRChatApp.ViewModel.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link rel="stylesheet" href="~/css/auth-modern.css" asp-append-version="true" />
+
+<div class="auth-page-wrapper">
+    <div class="auth-container">
+        <!-- Left Side: Branding & Features -->
+        <div class="auth-side-info">
+            <div class="brand">
+                <i class="bi bi-chat-dots-fill fs-2"></i>
+                <span>SignalRChatApp</span>
+            </div>
+
+            <div class="auth-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h5>Real-time Sync</h5>
+                        <p>Experience zero-latency messaging powered by SignalR technology.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h5>Secure & Private</h5>
+                        <p>Your conversations are protected with industry-standard security protocols.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h5>Community Focused</h5>
+                        <p>Join or create communities and chat with thousands of users.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-footer-note">
+                <p class="mb-0 opacity-75 small">&copy; 2026 SignalRChatApp. All rights reserved.</p>
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="auth-form-side">
+            <div class="auth-header text-center text-lg-start">
+                <h2>Welcome Back</h2>
+                <p>Enter your credentials to access your account</p>
+            </div>
+
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+                <div class="form-group-modern">
+                    <label asp-for="Email" class="form-label-modern">Email Address</label>
+                    <input asp-for="Email" class="form-control-modern" placeholder="e.g. alex@example.com" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-group-modern">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label asp-for="Password" class="form-label-modern mb-0">Password</label>
+                        <a href="#" class="text-primary text-decoration-none small fw-bold">Forgot?</a>
+                    </div>
+                    <input asp-for="Password" type="password" class="form-control-modern" placeholder="••••••••" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" asp-for="RememberMe" id="rememberMe">
+                    <label class="form-check-label text-muted small" for="rememberMe">
+                        Remember me for 30 days
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="auth-divider">
+                <span>OR CONTINUE WITH</span>
+            </div>
+
+            <div class="social-login">
+                <a href="#" class="btn-social">
+                    <i class="bi bi-google text-danger"></i>
+                    <span>Google</span>
+                </a>
+                <a href="#" class="btn-social">
+                    <i class="bi bi-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+
+            <div class="text-center mt-auto pt-4">
+                <p class="mb-0 text-muted small">New to the platform? 
+                    <a asp-action="Register" class="text-primary text-decoration-none fw-bold">Create an account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

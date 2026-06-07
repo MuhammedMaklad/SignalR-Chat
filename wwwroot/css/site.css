@@ -1,0 +1,209 @@
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
+:root {
+    /* Primary & Brand */
+    --color-primary: #0ea5e9;
+    --color-primary-hover: #0284c7;
+    --color-primary-rgb: 14, 165, 233;
+    --color-secondary: #0ea5e9;
+    --color-error: #ef4444;
+
+    /* Grayscale & Surface */
+    --color-border: #e5e7eb;
+    --color-text-main: #111827;
+    --color-text-muted: #6b7280;
+    --color-text-light: #9ca3af;
+    --color-bg-main: #f8fafc;
+    --color-bg-surface: #ffffff;
+    --color-bg-gray: #f9fafb;
+
+    /* Legacy compatibility */
+    --primary-color: var(--color-primary);
+    --primary-hover: var(--color-primary-hover);
+    --border-color: var(--color-border);
+    --text-main: var(--color-text-main);
+    --text-muted: var(--color-text-muted);
+    --bg-main: var(--color-bg-main);
+
+    --header-height: 72px;
+}
+
+/* ============================================
+   Base & Reset
+   ============================================ */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.smaller { font-size: 0.85rem; }
+.line-height-1 { line-height: 1; }
+
+/* ============================================
+   Color Utilities
+   ============================================ */
+.bg-primary-subtle { background-color: #eef2ff !important; }
+.bg-success-subtle { background-color: #f0fdf4 !important; }
+.bg-info-subtle { background-color: #f0f9ff !important; }
+.bg-danger-subtle { background-color: #fef2f2 !important; }
+.text-primary { color: var(--primary-color) !important; }
+.bg-brand-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+/* ============================================
+   Layout Utilities
+   ============================================ */
+.uppercase { text-transform: uppercase; }
+.letter-spacing-1 { letter-spacing: 0.05em; }
+.transition-hover { transition: transform 0.2s, box-shadow 0.2s; }
+.transition-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1) !important; }
+
+/* ============================================
+   Glassmorphism Header
+   ============================================ */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+header .navbar {
+    min-height: var(--header-height);
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--primary-color) !important;
+    letter-spacing: -0.025em;
+}
+
+.nav-link-modern {
+    font-weight: 600;
+    color: var(--text-muted) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.nav-link-modern:hover {
+    color: var(--primary-color) !important;
+    background-color: #f3f4f6;
+}
+
+.nav-link-modern.active {
+    color: var(--primary-color) !important;
+    background-color: #eef2ff;
+}
+
+/* ============================================
+   User Profile Dropdown
+   ============================================ */
+.user-dropdown-toggle {
+    transition: opacity 0.2s;
+}
+
+.user-dropdown-toggle:hover {
+    opacity: 0.8;
+}
+
+.dropdown-menu-modern {
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    min-width: 220px;
+}
+
+.dropdown-item-modern {
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   Brand Buttons
+   ============================================ */
+.btn-white {
+    background: #fff;
+    color: var(--color-primary);
+    border: none;
+}
+.btn-white:hover {
+    background: #f8fafc;
+    color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.btn-outline-white {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+.btn-outline-white:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #fff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Feature Icon Circle
+   ============================================ */
+.feature-icon-circle {
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+/* ============================================
+   Primary Button
+   ============================================ */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.6rem 1.2rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}

@@ -1,0 +1,16 @@
+﻿/* Layout-scoped styles */
+
+.border-top {
+    border-top: 1px solid var(--color-border);
+}
+.border-bottom {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.hover-primary:hover {
+    color: var(--color-primary) !important;
+}

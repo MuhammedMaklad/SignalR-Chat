@@ -1,0 +1,25 @@
+# .NET
+bin/
+obj/
+*.csproj.user
+*.user
+*.suo
+*.sln.docstates
+*.userprefs
+
+# Visual Studio
+.vs/
+*.sln.ide/
+*.sln.ide/opencode/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+appsettings.Development.json
+wwwroot/lib/

@@ -1,0 +1,65 @@
+@model List<SignalRChatApp.Contracts.UserDto>
+
+@{
+    ViewData["Title"] = "Invite Member";
+}
+
+<link rel="stylesheet" href="~/css/communities-modern.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/auth-modern.css" asp-append-version="true" />
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8 col-lg-5">
+        <div class="form-container-card">
+            <div class="form-header-gradient">
+                <i class="bi bi-person-plus-fill"></i>
+                <h2 class="fw-800 mb-1">Invite Member</h2>
+                <p class="mb-0 opacity-75">Expand your community with new members</p>
+            </div>
+
+            <div class="form-body-modern">
+                @if (Model.Count == 0)
+                {
+                    <div class="text-center py-4">
+                        <div class="community-icon mx-auto mb-3">
+                            <i class="bi bi-check2-circle fs-2"></i>
+                        </div>
+                        <h5>All caught up!</h5>
+                        <p class="text-muted small">All available users are already members of this community.</p>
+                        <a asp-controller="Groups" asp-action="Index" class="btn btn-primary px-4 rounded-pill mt-3">
+                            Back to Communities
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <form asp-controller="Groups" asp-action="AddMember" method="post">
+                        <input type="hidden" name="groupId" value="@ViewBag.GroupId" />
+
+                        <div class="form-group-modern">
+                            <label for="userId" class="form-label-modern">Select User</label>
+                            <select id="userId" name="userId" class="form-select form-control-modern" required>
+                                <option value="">-- Choose a user to invite --</option>
+                                @foreach (var user in Model)
+                                {
+                                    <option value="@user.Id">@user.UserName</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="alert alert-warning border-0 rounded-3 small d-flex align-items-center gap-3">
+                            <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                            <span>The selected user will be added to the community immediately and can start chatting.</span>
+                        </div>
+
+                        <div class="mt-4 d-grid gap-2">
+                            <button type="submit" class="btn-auth">Send Invitation</button>
+                            <a asp-controller="Groups" asp-action="Index" class="btn btn-link text-muted text-decoration-none small">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>

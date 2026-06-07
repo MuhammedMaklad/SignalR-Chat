@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-header bg-white border-bottom p-4">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-primary-subtle text-primary rounded-3 p-2">
+                        <i class="bi bi-shield-lock-fill fs-4"></i>
+                    </div>
+                    <div>
+                        <h2 class="fw-800 mb-0">@ViewData["Title"]</h2>
+                        <p class="text-muted small mb-0">Last updated: June 4, 2026</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <section class="mb-5">
+                    <h5 class="fw-700 text-dark mb-3">Our Commitment</h5>
+                    <p class="text-muted lh-lg">At SignalRChatApp, we take your privacy seriously. This policy outlines how we handle your personal data and ensures your conversations remain secure and private. We are committed to transparency in our data practices.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h5 class="fw-700 text-dark mb-3">Information We Collect</h5>
+                    <ul class="text-muted lh-lg">
+                        <li><strong>Account Data:</strong> Username, email address, and password (encrypted).</li>
+                        <li><strong>Communication Data:</strong> Chat messages, group associations, and timestamps.</li>
+                        <li><strong>Connection Data:</strong> Basic logs of your connectivity to the SignalR hub for presence tracking.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h5 class="fw-700 text-dark mb-3">How We Use Your Data</h5>
+                    <p class="text-muted lh-lg">Your data is primarily used to provide real-time messaging services. We do not sell your personal information to third parties. Connection logs are used exclusively for showing your online status to your contacts and community members.</p>
+                </section>
+
+                <section class="mb-0">
+                    <h5 class="fw-700 text-dark mb-3">Your Rights</h5>
+                    <p class="text-muted lh-lg">You have the right to access, correct, or delete your personal information at any time. If you have questions about your data, please contact our support team.</p>
+                </section>
+            </div>
+            <div class="card-footer bg-light p-4 text-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary px-4 rounded-pill fw-600">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
